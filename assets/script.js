@@ -1,25 +1,43 @@
-var buttonSub = document.getElementById("submit")
-var cityDiv = document.getElementById("cityStor")
-cityStor()
 console.log("loaded")
+
+const history = [ ];
+
+//03a5b4d212ab01cae7f89d574ca482bc
+//03a5b4d212ab01cae7f89d574ca482bc
+
 function myFunction(event) {
-event.preventDefault();
-userInput = document.getElementById('cityName').value;
-//console.log(e)
-console.log(userInput);
-localStorage.setItem("city", userInput)
-cityStor()
+    event.preventDefault();
+    let search = document.querySelector("#name").value;
+    console.log(search)
+    history.push(search)
+    renderHistory();
+
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=03a5b4d212ab01cae7f89d574ca482bc')
+    .then(response => console.log(response))
+    .catch(error => {
+        console.log(error)
+    })
+    
 }
 
+const renderHistory = () => {
+    let box = document.getElementById('history__box')
+    document.querySelector("#name").value = ""
+    box.innerHTML = ""
+    const ul = document.createElement('ul')
+    
+    ul.className = 'history__list'
 
-function cityStor(){
-var previosCity = localStorage.getItem("city")
-//push previos city into an array define globally, append arrey,use jsonparse and json strinafy so you can take out and loop through
-//unit 4 activity 28 
-cityDiv.append(previosCity)
+    let list = history.map((item) => {
+        return `
+            <li>${item}</li>
+        `
+    })
 
+    let data = list.join(' ')
+    ul.innerHTML = data
+    
+    
+    box.appendChild(ul)
 }
-
-//unit 4 web apis activity 11
-buttonSub.addEventListener("click", myFunction)
 
