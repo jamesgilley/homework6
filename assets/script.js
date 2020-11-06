@@ -1,5 +1,3 @@
-console.log("loaded")
-
 let history = [ ];
 
 //03a5b4d212ab01cae7f89d574ca482bc
