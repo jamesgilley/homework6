@@ -12,7 +12,7 @@ function myFunction(event) {
     history.push(search)
     renderHistory();
 
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=03a5b4d212ab01cae7f89d574ca482bc')
+    fetch('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=03a5b4d212ab01cae7f89d574ca482bc')
     .then(response => console.log(response))
     .catch(error => {
         console.log(error)
