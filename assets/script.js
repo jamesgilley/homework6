@@ -22,7 +22,7 @@ const fetchWeather = (search) => {
             let lat = data.city.coord.lat;
             let lon = data.city.coord.lon;
             console.log('lat, lon:', lat, lon);
-            fetch(`http://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=03a5b4d212ab01cae7f89d574ca482bc`)
+            fetch(`https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=03a5b4d212ab01cae7f89d574ca482bc`)
                 .then(response => response.json())
                 .then(uvData => {
                     console.log('uvData:', uvData)
